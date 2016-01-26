@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Library", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{6F257202-8ACF-4724-B8FD-002D2A369DA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{19DB31A6-A906-49C3-B611-D78564E4C2E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{989CB953-94F4-40B9-A1ED-8058CC39D06C} = {19DB31A6-A906-49C3-B611-D78564E4C2E8}
+		{6F257202-8ACF-4724-B8FD-002D2A369DA5} = {19DB31A6-A906-49C3-B611-D78564E4C2E8}
 	EndGlobalSection
 EndGlobal
