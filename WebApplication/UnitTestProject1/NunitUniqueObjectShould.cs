@@ -47,6 +47,8 @@ namespace WebApplication.Tests.Library
             var response3 = UniqueObject.GetbyId(6);
             //Assert
             Assert.AreEqual(response3, item3);
+            Assert.AreEqual(12, response3.UnitId);
+
         }
     }
 }
