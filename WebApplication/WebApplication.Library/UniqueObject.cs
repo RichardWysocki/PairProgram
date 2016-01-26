@@ -22,7 +22,7 @@ namespace WebApplication.Library
         public int UnitId
         {
             get { return _id * 2; }
-            set { UnitId = value; }
+            private set { UnitId = value; }
         }
 
         public static UniqueObject GetbyId(int Id)
