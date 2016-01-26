@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Library
 {
-    public class UniqueObject
+    public class UniqueObject : IUniqueObject
     {
         private readonly int _id;
         private static Dictionary<int, UniqueObject> mylistDictionary = new Dictionary<int, UniqueObject>();
