@@ -210,6 +210,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\1417810327148.jpg" />
+    <Content Include="Content\images\1417810327377.png" />
+    <Content Include="Content\images\1417810327560.jpg" />
+    <Content Include="Content\images\1417810327994.jpg" />
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="favicon.ico" />
@@ -294,6 +298,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebApplication.Library\WebApplication.Library.csproj">
+      <Project>{6c62b198-1365-44b5-965b-ec31630f2734}</Project>
+      <Name>WebApplication.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
