@@ -47,7 +47,8 @@ namespace WebApplication.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<ActionResult> AddEmail(string model)
-        public async Task<ActionResult> AddEmail(string EmailAddress)
+        //public async Task<ActionResult> AddEmail(string EmailAddress)
+        public ActionResult AddEmail(string EmailAddress)
         {
             if (!ModelState.IsValid)
             {
