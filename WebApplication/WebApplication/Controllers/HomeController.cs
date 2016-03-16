@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using System.Web.Mvc;
 using WebApplication.Library;
 using WebApplication.Library.Interface;
 
@@ -42,7 +36,6 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        //
         // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
