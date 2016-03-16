@@ -43,29 +43,15 @@ namespace WebApplication.Controllers
         }
 
         //
-        // POST: /Manage/AddPhoneNumber
+        // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<ActionResult> AddEmail(string model)
-        //public async Task<ActionResult> AddEmail(string EmailAddress)
         public ActionResult AddEmail(string EmailAddress)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
-            //// Generate the token and send it
-            //var code = await UserManager<>.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-            //if (UserManager.SmsService != null)
-            //{
-            //    var message = new IdentityMessage
-            //    {
-            //        Destination = model.Number,
-            //        Body = "Your security code is: " + code
-            //    };
-            //    await UserManager.SmsService.SendAsync(message);
-            //}
-            //return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
             if (EmailAddress.Length > 0)
                 EMail.Send("Richard", "Tom", "TEst", "test Message", EmailAddress);
 
