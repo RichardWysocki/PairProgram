@@ -17,47 +17,6 @@ public class EMail
         SendWithLog(userName, sender, subject, body, new[] {recipient});         
     }
 
-    //public static void AuthenticateSmtp(string fromEmail, string toEmail, string subj, string body, string ccList)
-    //{
-    //    //create the mail message
-    //    MailMessage mail = new MailMessage();
-
-    //    //set the addresses
-    //    mail.From = new MailAddress(fromEmail);
-    //    mail.To.Add(toEmail);
-    //    if (ccList.Length > 0)
-    //    {
-    //        char[] delimitor = { ';' };
-    //        string[] ccEmails = ccList.Split(delimitor); //(char)';');
-    //        foreach (string s in ccEmails)
-    //        {
-    //            mail.Bcc.Add(s); 
-    //        }
-    //    } // Do nothing if no CClist
-
-    //    //set the content
-    //    mail.Subject = subj;
-    //    mail.Body = body;
-
-    //    //send the message
-    //    var smtp = new SmtpClient(ConfigSettings.SMTPServer);
-
-    //    //to authenticate we set the username and password properites on the SmtpClient
-    //    smtp.Credentials = new System.Net.NetworkCredential(ConfigSettings.SmtpServerUserName, ConfigSettings.SmtpServerPassword);
-        
-    //    // Do a Send
-    //    try
-    //    {
-    //        smtp.Send(mail);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        LogFile.AppendtoDB("EMail.AuthenticateSMTP", ex.Message);
-    //        LogFile.AppendToFile(ex.Message + ex.Source);
-    //    }
-
-    //}
-
     public static string SendWithLog(string userName, string sender, string subject, string body, string[] recipients) 
     { 
         MailMessage message;
