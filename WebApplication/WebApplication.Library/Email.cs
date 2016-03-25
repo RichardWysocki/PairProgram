@@ -18,7 +18,10 @@ public class EMail
     }
 
     public static string SendWithLog(string userName, string sender, string subject, string body, string[] recipients) 
-    { 
+    {
+
+        LogErrorBusiness.AddLogError("SendWithLog", "Message", "Source");
+
         MailMessage message;
         StringBuilder failedMessages = new StringBuilder(); 
         StringBuilder recipientList = new StringBuilder();

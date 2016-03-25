@@ -17,7 +17,7 @@ namespace WebApplication.Library
 
             SqlCommand cmd = ConfigSettings.DBCmd;
             cmd.Parameters.Clear();
-            cmd.CommandText = "FeedBack_Insert";
+            cmd.CommandText = "LogError_Insert";
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlTransaction transaction;
@@ -47,11 +47,11 @@ namespace WebApplication.Library
                     throw new Exception("Error Text Added to the Database: " + ReturnValue.ToString());
 
                 }
-                else
-                {
-                    EMail sendEmail = new EMail();
-                    EMail.Send("RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "Wysocki-Richard@aramark.com");
-                }
+                //else
+                //{
+                //    EMail sendEmail = new EMail();
+                //    EMail.Send("RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "Wysocki-Richard@aramark.com");
+                //}
             }
             catch (Exception e)
             {

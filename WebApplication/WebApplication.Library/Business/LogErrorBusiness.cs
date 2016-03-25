@@ -12,14 +12,7 @@ namespace WebApplication.Library.Business
         public static bool AddLogError(LogError NewLogError)
         {
             bool returnvalue;
-            try
-            {
-                returnvalue = _dac.LogError_Insert(NewLogError); 
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            returnvalue = _dac.LogError_Insert(NewLogError);
             return returnvalue;
         }
 
@@ -36,14 +29,7 @@ namespace WebApplication.Library.Business
             addError.LogErrorMessage = _logErrorMessage;
             addError.LogErrorSource = _logErrorSource;
 
-            try
-            {
-                returnvalue = _dac.LogError_Insert(addError);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            returnvalue = _dac.LogError_Insert(addError);
             return returnvalue;
         }
     }

@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\When_Validating_ErrorLog.cs" />
     <Compile Include="Library\NunitUniqueObjectShould.cs" />
     <Compile Include="Library\UniqueObjectShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
