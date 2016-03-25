@@ -3,11 +3,11 @@ using System.Data;
 using System.Data.SqlClient;
 using WebApplication.Library.Models;
 
-namespace WebApplication.Library
+namespace WebApplication.Library.DataAccess
 {
     public class LogErrorDA
     {
-        public bool LogError_Insert(LogError InsertLogError)
+        public bool LogError_Insert(LogError insertLogError)
         {
             bool insertSuccessful = true;
 
@@ -26,21 +26,20 @@ namespace WebApplication.Library
                 cmd.Parameters.Add("@LogErrorMessage", SqlDbType.Text, 4000);
                 cmd.Parameters.Add("@LogErrorSource", SqlDbType.Text, 4000);
 
-                cmd.Parameters["@LogErrorMethod"].Value = InsertLogError.LogErrorMethod;
-                cmd.Parameters["@LogErrorMessage"].Value = InsertLogError.LogErrorMessage;
-                cmd.Parameters["@LogErrorSource"].Value = InsertLogError.LogErrorSource;
+                cmd.Parameters["@LogErrorMethod"].Value = insertLogError.LogErrorMethod;
+                cmd.Parameters["@LogErrorMessage"].Value = insertLogError.LogErrorMessage;
+                cmd.Parameters["@LogErrorSource"].Value = insertLogError.LogErrorSource;
 
                 cmd.Parameters.Add("@RETURNVALUE", SqlDbType.Int);
                 cmd.Parameters["@RETURNVALUE"].Direction = ParameterDirection.ReturnValue;
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
-                int ReturnValue = int.Parse(cmd.Parameters["@RETURNVALUE"].Value.ToString());
+                int returnValue = int.Parse(cmd.Parameters["@RETURNVALUE"].Value.ToString());
 
-                if (ReturnValue < 0)
+                if (returnValue < 0)
                 {
-                    insertSuccessful = false;
-                    throw new Exception("Error Text Added to the Database: " + ReturnValue.ToString());
+                    throw new Exception("Error Text Added to the Database: " + returnValue.ToString());
 
                 }
                 //else

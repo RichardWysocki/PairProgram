@@ -49,7 +49,7 @@
     <Compile Include="Interface\IUniqueObject.cs" />
     <Compile Include="Interface\Observer.cs" />
     <Compile Include="Interface\Subject.cs" />
-    <Compile Include="LogErrorDA.cs" />
+    <Compile Include="DataAccess\LogErrorDA.cs" />
     <Compile Include="Interface\ILogError.cs" />
     <Compile Include="LogFile.cs" />
     <Compile Include="Models\LogError.cs" />

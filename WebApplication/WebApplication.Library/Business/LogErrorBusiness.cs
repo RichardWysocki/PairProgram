@@ -1,4 +1,5 @@
-﻿using WebApplication.Library.Models;
+﻿using WebApplication.Library.DataAccess;
+using WebApplication.Library.Models;
 
 namespace WebApplication.Library.Business
 {
@@ -8,10 +9,10 @@ namespace WebApplication.Library.Business
         /* General Variable Declarations */
         public static LogErrorDA _dac = new LogErrorDA();
 
-        public static bool AddLogError(LogError NewLogError)
+        public static bool AddLogError(LogError newLogError)
         {
             bool returnvalue;
-            returnvalue = _dac.LogError_Insert(NewLogError);
+            returnvalue = _dac.LogError_Insert(newLogError);
             return returnvalue;
         }
 

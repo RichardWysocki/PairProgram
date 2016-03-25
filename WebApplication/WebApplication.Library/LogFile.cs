@@ -7,63 +7,65 @@ namespace WebApplication.Library
 {
     public class LogFile
     {
-
-        private string _ErrorSource;
-        private string _ErrorText;
+        private string _errorSource;
+        private string _errorText;
 
         public string ErrorSource
         {
             get
             {
-                return _ErrorSource;
+                return _errorSource;
             }
             set
             {
-                _ErrorSource = value;
+                _errorSource = value;
             }
         }
         public string ErrorText
         {
             get
             {
-                return _ErrorText;
+                return _errorText;
             }
             set
             {
-                _ErrorText = value;
+                _errorText = value;
             }
         }
 
-        public static void AppendToFile(string AppendText)
+        public static void AppendToFile(string appendText)
         {
             if (ConfigSettings.WriteLogFile == "True")
             {
                 StreamWriter SW;
                 SW = File.AppendText(ConfigSettings.LogFile);
-                SW.WriteLine(DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "     " + AppendText);
+                SW.WriteLine(DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "     " + appendText);
                 SW.Close();
                 //Console.WriteLine("Text Appended Successfully");
 
             }
         }
+
         public void AppendtoDB()
         {
-            if (this._ErrorText.Length > 0)
+            if (_errorText.Length > 0)
             {
-                DBErrorLog(this._ErrorSource, this._ErrorText);
+                DbErrorLog(_errorSource, _errorText);
             }
             else
             {
                 throw new Exception("ErrorText is empty");
             }
         }
-        public static void AppendtoDB(string dbErrorSource, string AppendText)
+
+        public static void AppendtoDB(string dbErrorSource, string appendText)
         {
-            AppendToFile(dbErrorSource.PadRight(50) + " -> " + AppendText);
+            AppendToFile(dbErrorSource.PadRight(50) + " -> " + appendText);
             LogFile addLog = new LogFile();
-            addLog.DBErrorLog(dbErrorSource,AppendText);
+            addLog.DbErrorLog(dbErrorSource,appendText);
         }
-        public void DBErrorLog(string dbErrorSource, string dbErrorText)
+
+        public void DbErrorLog(string dbErrorSource, string dbErrorText)
         {
            SqlCommand cmd = ConfigSettings.DBCmd;
            cmd.Parameters.Clear();
@@ -80,16 +82,12 @@ namespace WebApplication.Library
 
            cmd.ExecuteNonQuery();
 
-           int ReturnValue = int.Parse(cmd.Parameters["@RETURNVALUE"].Value.ToString());
+           int returnValue = int.Parse(cmd.Parameters["@RETURNVALUE"].Value.ToString());
 
-           if (ReturnValue < 0)
+           if (returnValue < 0)
            {
-               throw new Exception("Error Text Added to the Database: " + ReturnValue.ToString());
+               throw new Exception("Error Text Added to the Database: " + returnValue.ToString());
            }
         }
-
     }
-
-
-
 }
