@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace WebApplication.Library.Interface
+﻿namespace WebApplication.Library.Interface
 {
     public class Observer : IObserver
     {

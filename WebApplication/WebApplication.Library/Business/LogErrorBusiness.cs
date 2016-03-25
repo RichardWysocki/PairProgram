@@ -1,5 +1,4 @@
-﻿using System;
-using WebApplication.Library.Models;
+﻿using WebApplication.Library.Models;
 
 namespace WebApplication.Library.Business
 {
