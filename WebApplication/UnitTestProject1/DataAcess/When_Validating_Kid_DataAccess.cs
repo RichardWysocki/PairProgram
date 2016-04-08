@@ -2,29 +2,27 @@
 using NUnit.Framework;
 using WebApplication.Library.DataAccess;
 using WebApplication.Library.Models;
+using WebApplication.Library.Utilities;
 
-namespace WebApplication.Tests.DataAcess
+namespace UnitTestProject1.DataAcess
 {
     // Given_When_Then
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public class When_Validating_Kid_DataAccess
     {
-        private int integrationDelete;
-        private int integrationInsert;
-        private int integrationUpdate;
-        private int integrationForUpdate;
+        private int _integrationDelete;
+        private int _integrationForUpdate;
 
         [Test]
         public void Null_KidDataAccess_Insert_ThrowError()
         {
             // Arrange
-            var AddKid = new KidDataAccess();
+            var addKid = new KidDataAccess();
 
             // Act
             // Assert
-
-            Assert.Throws<ArgumentException>(() => AddKid.Insert(null) );
-
+            Assert.Throws<ArgumentException>(() => addKid.Insert(null) );
         }
 
         [Test]
@@ -32,26 +30,26 @@ namespace WebApplication.Tests.DataAcess
         {
             // Arrange
             var newKid = new Kid();
-            var AddKid = new KidDataAccess();
+            var addKid = new KidDataAccess();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentException>(() => AddKid.Insert(newKid));
+            Assert.Throws<ArgumentException>(() => addKid.Insert(newKid));
 
         }
 
         [Test]
         [TestCase("Allison","AllisonJadeWysocki@gmail.com")]
-        public void Valid_KidDataAccess_Insert_AddsKid(string Name, string Email)
+        public void Valid_KidDataAccess_Insert_AddsKid(string name, string email)
         {
             // Arrange
             var newKid = new Kid();
-            newKid.Name = Name;
-            newKid.Email = Email;
-            var AddKid = new KidDataAccess();
+            newKid.Name = name;
+            newKid.Email = email;
+            var addKid = new KidDataAccess();
 
             // Act
-            var result = AddKid.Insert(newKid);
+            var result = addKid.Insert(newKid);
 
             // Assert
             Assert.AreEqual(true, result, "We should have Inserted the Record");
@@ -61,12 +59,11 @@ namespace WebApplication.Tests.DataAcess
         public void Null_KidDataAccess_Update_ThrowError()
         {
             // Arrange
-            var AddKid = new KidDataAccess();
+            var addKid = new KidDataAccess();
 
             // Act
             // Assert
-
-            Assert.Throws<ArgumentException>(() => AddKid.Update(null));
+            Assert.Throws<ArgumentException>(() => addKid.Update(null));
 
         }
 
@@ -75,27 +72,27 @@ namespace WebApplication.Tests.DataAcess
         {
             // Arrange
             var newKid = new Kid();
-            var AddKid = new KidDataAccess();
+            var addKid = new KidDataAccess();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentException>(() => AddKid.Update(newKid));
+            Assert.Throws<ArgumentException>(() => addKid.Update(newKid));
 
         }
 
         [Test]
         [TestCase("Richard", "RichardWysocki@gmail.com")]
-        public void Valid_KidDataAccess_Update_updateKid(string Name, string Email)
+        public void Valid_KidDataAccess_Update_updateKid(string name, string email)
         {
             // Arrange
             var updateKid = new Kid();
-            updateKid.KidID = integrationForUpdate;
-            updateKid.Name = Name;
-            updateKid.Email = Email;
-            var AddKid = new KidDataAccess();
+            updateKid.KidID = _integrationForUpdate;
+            updateKid.Name = name;
+            updateKid.Email = email;
+            var addKid = new KidDataAccess();
 
             // Act
-            var result = AddKid.Update(updateKid);
+            var result = addKid.Update(updateKid);
 
             // Assert
             Assert.AreEqual(true, result, "We should have Updated the Record");
@@ -107,11 +104,11 @@ namespace WebApplication.Tests.DataAcess
         {
             // Arrange
             var deleteID = 0;
-            var AddKid = new KidDataAccess();
+            var addKid = new KidDataAccess();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentException>(() => AddKid.Delete(deleteID));
+            Assert.Throws<ArgumentException>(() => addKid.Delete(deleteID));
 
         }
 
@@ -119,11 +116,11 @@ namespace WebApplication.Tests.DataAcess
         public void Valid_KidDataAccess_Delete_updateKid()
         {
             // Arrange
-            var deleteID = integrationDelete;
+            var deleteId = _integrationDelete;
             var deleteKid = new KidDataAccess();
 
             // Act
-            var result = deleteKid.Delete(deleteID);
+            var result = deleteKid.Delete(deleteId);
 
             // Assert
             Assert.AreEqual(true, result, "We should have Deleted the Record");
@@ -133,23 +130,23 @@ namespace WebApplication.Tests.DataAcess
         [TestFixtureSetUp]
         public void SetUp()
         {
-            integrationDelete = TestHelperUtility.ExecuteInsert(@"INSERT INTO XKid(Name, Email) Values('MaggiWysocki','MagiWysocki@gmail.com')");
+            _integrationDelete = TestHelperUtility.ExecuteInsert(@"INSERT INTO XKid(Name, Email) Values('MaggiWysocki','MagiWysocki@gmail.com')");
 
-            integrationForUpdate = TestHelperUtility.ExecuteInsert(@"INSERT INTO XKid(Name, Email) Values('Rich','RichardWysocki@gmail.com')");
+            _integrationForUpdate = TestHelperUtility.ExecuteInsert(@"INSERT INTO XKid(Name, Email) Values('Rich','RichardWysocki@gmail.com')");
 
-            integrationUpdate = TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'","Allison","AllisonJadeWysocki@gmail.com"));
+            TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'","Allison","AllisonJadeWysocki@gmail.com"));
         }
 
         [TestFixtureTearDown]
         public void TearDown()
         {
-            var DeleteInsert = TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'", "Allison", "AllisonJadeWysocki@gmail.com"));
-            if (DeleteInsert > 0)
-                TestHelperUtility.Delete(string.Format("Delete XKid where KidID={0}", DeleteInsert));
+            var deleteInsert = TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'", "Allison", "AllisonJadeWysocki@gmail.com"));
+            if (deleteInsert > 0)
+                TestHelperUtility.Delete(string.Format("Delete XKid where KidID={0}", deleteInsert));
 
-            var DeleteUpdate = TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'", "Richard", "RichardWysocki@gmail.com"));
-            if (DeleteUpdate > 0)
-                TestHelperUtility.Delete(string.Format("Delete XKid where KidID={0}", DeleteUpdate));
+            var deleteUpdate = TestHelperUtility.Execute(string.Format("Select KidID from XKid Where Name='{0}' and Email='{1}'", "Richard", "RichardWysocki@gmail.com"));
+            if (deleteUpdate > 0)
+                TestHelperUtility.Delete(string.Format("Delete XKid where KidID={0}", deleteUpdate));
         }
     }
 }

@@ -51,7 +51,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="DataAcess\TestHelperUtility.cs" />
     <Compile Include="DataAcess\When_Validating_Kid_DataAccess.cs" />
     <Compile Include="NunitUniqueObjectShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
