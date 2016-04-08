@@ -1,0 +1,7 @@
+﻿CREATE USER [SQLUser]
+	WITH PASSWORD = 'Pass@word1',
+	DEFAULT_SCHEMA = dbo
+
+GO
+
+GRANT CONNECT TO [SQLUser]

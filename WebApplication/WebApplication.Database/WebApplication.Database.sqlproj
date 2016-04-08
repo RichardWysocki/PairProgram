@@ -233,6 +233,9 @@
     <Build Include="dbo\Tables\XmasPresentList.sql" />
     <Build Include="dbo\Tables\XParent.sql" />
     <Build Include="Scripts\Post-Deployment\LoadDataScripts\script.sql" />
+    <Build Include="dbo\Stored Procedures\Kid_Update.sql" />
+    <Build Include="dbo\Stored Procedures\Kid_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\Kid_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />

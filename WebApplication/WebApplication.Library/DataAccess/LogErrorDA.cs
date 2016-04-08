@@ -42,11 +42,6 @@ namespace WebApplication.Library.DataAccess
                     throw new Exception("Error Text Added to the Database: " + returnValue.ToString());
 
                 }
-                //else
-                //{
-                //    EMail sendEmail = new EMail();
-                //    EMail.Send("RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "RichardWysocki@gmail.com", "Wysocki-Richard@aramark.com");
-                //}
             }
             catch (Exception e)
             {
