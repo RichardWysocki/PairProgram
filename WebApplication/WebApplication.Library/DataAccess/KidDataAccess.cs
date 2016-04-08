@@ -123,8 +123,6 @@ namespace WebApplication.Library.DataAccess
             if (deleteId == 0)
                 throw new ArgumentException();
 
-            bool returnvalue;
-
             var cmd = SqlCommand("Kid_Delete");
 
             SqlTransaction transaction;
@@ -143,31 +141,15 @@ namespace WebApplication.Library.DataAccess
                 {
                     throw new Exception("Error Text Added to the Database: " + returnValue.ToString());
                 }
-                returnvalue = true;
                 //System.Web.HttpContext.Current.Cache.Remove("PLUList");
             }
             catch (Exception e)
             {
-                returnvalue = false;
-                try
-                {
-                    transaction.Rollback();
-                }
-                catch (SqlException ex)
-                {
-                    if (transaction.Connection != null)
-                    {
-                        Console.WriteLine("An exception of type " + ex.GetType() +
-                            " was encountered while attempting to roll back the transaction.");
-                    }
-                }
-
-                Console.WriteLine("An exception of type " + e.GetType() +
-                    " was encountered while inserting the data.");
-                Console.WriteLine("Neither record was written to database.");
+                Console.WriteLine("An exception of type " + e.GetType() +" was encountered while attempting to delete the transaction.");
+                throw;
             }
 
-            return returnvalue;
+            return true;
         }
 
         private static SqlCommand SqlCommand(string storedProcedure)

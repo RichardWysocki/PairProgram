@@ -113,7 +113,7 @@ namespace UnitTestProject1.DataAcess
         }
 
         [Test]
-        public void Valid_KidDataAccess_Delete_updateKid()
+        public void Valid_KidDataAccess_Delete_deleteKid()
         {
             // Arrange
             var deleteId = _integrationDelete;
@@ -125,6 +125,20 @@ namespace UnitTestProject1.DataAcess
             // Assert
             Assert.AreEqual(true, result, "We should have Deleted the Record");
 
+        }
+
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void InValidKidID_KidDataAccess_Delete_deleteKid()
+        {
+            // Arrange
+            var deleteId = 999;
+            var deleteKid = new KidDataAccess();
+
+            // Act
+            var result = deleteKid.Delete(deleteId);
+
+            // Assert
         }
 
         [TestFixtureSetUp]
