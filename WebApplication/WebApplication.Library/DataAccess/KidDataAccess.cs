@@ -5,7 +5,7 @@ using WebApplication.Library.Models;
 
 namespace WebApplication.Library.DataAccess
 {
-    public class KidDataAccess
+    public class KidDataAccess : IKidDataAccess
     {
         public bool Insert(Kid kid)
         {
@@ -14,7 +14,7 @@ namespace WebApplication.Library.DataAccess
             if (kid == null || !kid.IsValidNew())
                 throw new ArgumentException();
 
-            var cmd = SqlCommand("Kid_Insert");
+            var cmd = DBUtility.SqlCommand("Kid_Insert");
             // Start a local transaction.
             var transaction = cmd.Connection.BeginTransaction(IsolationLevel.ReadCommitted, "Kid_Insert");
             cmd.Transaction = transaction;
@@ -68,7 +68,7 @@ namespace WebApplication.Library.DataAccess
             if (updateKid == null || !updateKid.IsValidUpdate())
                 throw new ArgumentException();
 
-            var cmd = SqlCommand("Kid_Update");
+            var cmd = DBUtility.SqlCommand("Kid_Update");
             SqlTransaction transaction;
             // Start a local transaction.
             transaction = cmd.Connection.BeginTransaction(IsolationLevel.ReadCommitted, "XKid_Update");
@@ -123,7 +123,7 @@ namespace WebApplication.Library.DataAccess
             if (deleteId == 0)
                 throw new ArgumentException();
 
-            var cmd = SqlCommand("Kid_Delete");
+            var cmd = DBUtility.SqlCommand("Kid_Delete");
 
             SqlTransaction transaction;
             // Start a local transaction.
@@ -150,16 +150,6 @@ namespace WebApplication.Library.DataAccess
             }
 
             return true;
-        }
-
-        private static SqlCommand SqlCommand(string storedProcedure)
-        {
-            SqlCommand cmd = ConfigSettings.DBCmd;
-            cmd.Parameters.Clear();
-            cmd.CommandText = storedProcedure;
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            return cmd;
         }
     }
 }

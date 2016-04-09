@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Business\LogErrorBusiness.cs" />
     <Compile Include="ConfigSettings.cs" />
+    <Compile Include="Business\DBUtility.cs" />
+    <Compile Include="DataAccess\IKidDataAccess.cs" />
     <Compile Include="DataAccess\KidDataAccess.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Interface\ISubject.cs" />
