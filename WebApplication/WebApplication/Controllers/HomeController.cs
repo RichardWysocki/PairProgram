@@ -6,13 +6,18 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private ISubject _isubject;
+        public HomeController(ISubject subject)
+        {
+            _isubject = subject;
+        }
         public ActionResult Index()
         {
             var x1 = new Observer("Item 1");
             var x2 = new Observer("Item 2");
             var x3 = new Observer("Item 3");
 
-            var observermanager = new Subject();
+            var observermanager = _isubject; //new Subject();
             observermanager.Add(x1);
             observermanager.Add(x2);
             observermanager.Add(x3);
@@ -39,14 +44,14 @@ namespace WebApplication.Controllers
         // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddEmail(string EmailAddress)
+        public ActionResult AddEmail(string emailAddress)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
-            if (EmailAddress.Length > 0)
-                EMail.Send("Richard", "Tom", "TEst", "test Message", EmailAddress);
+            if (emailAddress.Length > 0)
+                EMail.Send("Richard", "Tom", "TEst", "test Message", emailAddress);
 
             return RedirectToAction("Index");
         }

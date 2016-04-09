@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApplication.Controllers;
+using WebApplication.Library.Interface;
 
 namespace WebApplication.Tests.Controllers
 {
@@ -11,7 +12,7 @@ namespace WebApplication.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new Subject());
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -24,7 +25,7 @@ namespace WebApplication.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new Subject());
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -37,7 +38,7 @@ namespace WebApplication.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new Subject());
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
