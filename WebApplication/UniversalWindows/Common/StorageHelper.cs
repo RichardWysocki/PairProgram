@@ -43,19 +43,24 @@ namespace WindowsStore_CampusDish.Common
             {
                 if (obj != null)
                 {
-                    StorageFile file;
-                    StorageFolder folder = GetFolder(storageType);
+
+                    StorageFolder folder = ApplicationData.Current.LocalFolder;
+                    StorageFile file = await folder.CreateFileAsync(desiredName: "Settings.xml", options: CreationCollisionOption.ReplaceExisting);
+                    //Stream stream = await file.OpenStreamForWriteAsync();
+                    //xmlSettings.Save(stream);
+                    using (Stream stream = await file.OpenStreamForWriteAsync())
+                    {
+                        serializer.Serialize(stream, obj);
+                    }
 
 
+                    //StorageFile file;
+                    //StorageFolder folder = GetFolder(storageType);
+                    //file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
 
-
-
-                    file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
-
-                    IRandomAccessStream writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
-                    Stream outStream = Task.Run(() => writeStream.AsStreamForWrite()).Result;
-                    serializer.Serialize(outStream, obj);
-                    //await writeStream.FlushAsync();
+                    //IRandomAccessStream writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
+                    //Stream outStream = Task.Run(() => writeStream.AsStreamForWrite()).Result;
+                    //serializer.Serialize(outStream, obj);
                     
                 }
             }
@@ -68,7 +73,7 @@ namespace WindowsStore_CampusDish.Common
 
         public async Task<T> LoadASync(string fileName)
         {
-            fileName = fileName + ".xml";
+            //fileName = fileName; //+ ".xml";
             try
             {
                 StorageFile file;

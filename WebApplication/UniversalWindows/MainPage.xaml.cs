@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,8 +25,9 @@ namespace UniversalWindows
 
         
         
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
+            var testa = await loadData();
             var peopleList = new List<PersonModel>();
             if (true)
             {
@@ -33,10 +35,10 @@ namespace UniversalWindows
                 //var peopleList = test.LoadASync(@"Richard1.txt").Result;
 
                 var person = new PersonModel(Name.Text, Email.Text, Phone.Text);
-                peopleList.Add(person);
+                testa.Add(person);
 
                 //var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
-                test.SaveASync(peopleList, @"Richard2.txt");
+                test.SaveASync(testa, @"Richard2.txt");
             }
 
         }
@@ -45,15 +47,15 @@ namespace UniversalWindows
         {
         }
 
-        private void OnloadedComplete(object sender, RoutedEventArgs e)
+        private async void OnloadedComplete(object sender, RoutedEventArgs e)
         {
             if (true)
             {
-                loadData();
+                await loadData();
             }
         }
 
-        private async void loadData()
+        private async Task<List<PersonModel>> loadData()
         {
             var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
             List<PersonModel> peopleList; 
@@ -61,7 +63,7 @@ namespace UniversalWindows
 
                 try
                 {
-                    var peopleList1 = test.LoadASync(@"Richard2.txt");
+                    peopleList = await test.LoadASync(@"Settings.xml");
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +73,8 @@ namespace UniversalWindows
             //    //
             //    Debug.WriteLine("An exception of type " + "Hello" + " was encountered while attempting to roll back the transaction.");
             //}
+
+            return peopleList;
         }
     }
 }
