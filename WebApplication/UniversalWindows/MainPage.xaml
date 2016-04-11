@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
     x:Class="UniversalWindows.MainPage"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="OnloadedComplete">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid Margin="0,49,0,-49">

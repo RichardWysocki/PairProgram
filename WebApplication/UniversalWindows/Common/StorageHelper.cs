@@ -15,7 +15,7 @@ namespace WindowsStore_CampusDish.Common
     public class StorageHelper<T>
     {
         private ApplicationData appData = ApplicationData.Current;
-        private XmlSerializer serializer;
+        private static XmlSerializer serializer;
         private StorageType storageType;
         public StorageHelper(StorageType StorageType)
         {
@@ -45,19 +45,27 @@ namespace WindowsStore_CampusDish.Common
                 {
                     StorageFile file;
                     StorageFolder folder = GetFolder(storageType);
-                    file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+
+
+
+
+
+                    file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
 
                     IRandomAccessStream writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
                     Stream outStream = Task.Run(() => writeStream.AsStreamForWrite()).Result;
                     serializer.Serialize(outStream, obj);
+                    //await writeStream.FlushAsync();
+                    
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (fileName != "CampusDiningWebSite.xml")
                         throw;
             }
         }
+
         public async Task<T> LoadASync(string fileName)
         {
             fileName = fileName + ".xml";
@@ -110,6 +118,7 @@ namespace WindowsStore_CampusDish.Common
                 return null;
             }
  }
+
 
 
         //internal void SaveASync(System.Collections.Generic.List<DataGroup> NewDataGroup, string p)
