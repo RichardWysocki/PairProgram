@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace WindowsStore_CampusDish.Common
+namespace UniversalWindows.Common
 {
   
     public enum StorageType
@@ -17,6 +17,7 @@ namespace WindowsStore_CampusDish.Common
         private ApplicationData appData = ApplicationData.Current;
         private static XmlSerializer serializer;
         private StorageType storageType;
+
         public StorageHelper(StorageType StorageType)
         {
             serializer = new XmlSerializer(typeof(T));
@@ -37,34 +38,21 @@ namespace WindowsStore_CampusDish.Common
 
         public async void SaveASync(T obj,string fileName)
         {
-
             fileName = fileName + ".xml";
             try
             {
                 if (obj != null)
                 {
-
                     StorageFolder folder = ApplicationData.Current.LocalFolder;
-                    StorageFile file = await folder.CreateFileAsync(desiredName: "Settings.xml", options: CreationCollisionOption.ReplaceExisting);
-                    //Stream stream = await file.OpenStreamForWriteAsync();
-                    //xmlSettings.Save(stream);
+                    StorageFile file = await folder.CreateFileAsync(desiredName: fileName, options: CreationCollisionOption.ReplaceExisting);
+
                     using (Stream stream = await file.OpenStreamForWriteAsync())
                     {
                         serializer.Serialize(stream, obj);
-                    }
-
-
-                    //StorageFile file;
-                    //StorageFolder folder = GetFolder(storageType);
-                    //file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
-
-                    //IRandomAccessStream writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
-                    //Stream outStream = Task.Run(() => writeStream.AsStreamForWrite()).Result;
-                    //serializer.Serialize(outStream, obj);
-                    
+                    }                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (fileName != "CampusDiningWebSite.xml")
                         throw;
@@ -123,8 +111,6 @@ namespace WindowsStore_CampusDish.Common
                 return null;
             }
  }
-
-
 
         //internal void SaveASync(System.Collections.Generic.List<DataGroup> NewDataGroup, string p)
         //{

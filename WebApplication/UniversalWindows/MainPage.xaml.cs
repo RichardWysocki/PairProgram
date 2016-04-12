@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using WindowsStore_CampusDish.Common;
 using Microsoft.Advertising.WinRT.UI;
+using UniversalWindows.Common;
 using PersonModel = UniversalWindows.Model.PersonModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -30,12 +30,12 @@ namespace UniversalWindows
             if (loadExistingData != null)
             {                
                 loadExistingData.Add(person);
-                storageHelper.SaveASync(loadExistingData, @"Richard2.txt");
+                storageHelper.SaveASync(loadExistingData, "Settings");
             }
             else
             {
                 peopleList.Add(person);
-                storageHelper.SaveASync(peopleList, @"Richard2.txt");
+                storageHelper.SaveASync(peopleList, "Settings");
             }
         }
 
