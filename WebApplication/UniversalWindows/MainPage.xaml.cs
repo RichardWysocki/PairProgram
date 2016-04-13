@@ -7,7 +7,6 @@ using Windows.UI.Xaml.Controls;
 using Microsoft.Advertising.WinRT.UI;
 using UniversalWindows.Common;
 using PersonModel = UniversalWindows.Model.PersonModel;
-using UniversalWindows.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,6 +15,7 @@ namespace UniversalWindows
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -81,27 +81,47 @@ namespace UniversalWindows
 
         private bool ValidatePerson(PersonModel person)
         {
-            return ValidateAllFieldsComplete(person) & ValidateEmail(person.Email);
+            ClearErrorMessage();
+            return ValidateAllFieldsComplete(person) && ValidateEmail(person.Email) && IsPhone(person.Phone);
         }
 
         private bool ValidateAllFieldsComplete(PersonModel person)
         {
-            return person.Email.Length > 0 & person.Name.Length > 0 & person.Phone.Length > 0;
+            var validateName = person.Email.Length > 0 & person.Name.Length > 0 & person.Phone.Length > 0;
+            if (validateName)
+                return true;
+            ErrorText.Text = "Please Complete all fields...";
+            return false;
         }
 
         private bool ValidateEmail(string personEmail)
         {
             string email = personEmail;
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
-            else
-                return false;
+            ErrorText.Text = "Please Enter a Valid Email Address...";
+            return false;
             //if (match.Success)
             //    lbl_message.Text = email + " is Valid Email Address";
             //else
             //    lbl_message.Text = email + " is Invalid Email Address";
+        }
+
+        private bool IsPhone(string strPhone)
+        {
+            var objPhonePattern = new Regex(@"^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$");
+            var validatePhone = objPhonePattern.IsMatch(strPhone);
+            if (validatePhone)
+                return true;
+            ErrorText.Text = "Please Enter a Valid Phone #...";
+            return false;
+        }
+
+        public void ClearErrorMessage()
+        {
+            ErrorText.Text = "";
         }
 
     }
