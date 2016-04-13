@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using UniversalWindows.Common;
 using UniversalWindows.Model;
 
@@ -63,16 +54,16 @@ namespace UniversalWindows
                     await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
                 if (status == Windows.Storage.Provider.FileUpdateStatus.Complete)
                 {
-                    this.textBlock.Text = "File " + file.Name + " was saved.";
+                    textBlock.Text = "File " + file.Name + " was saved.";
                 }
                 else
                 {
-                    this.textBlock.Text = "File " + file.Name + " couldn't be saved.";
+                    textBlock.Text = "File " + file.Name + " couldn't be saved.";
                 }
             }
             else
             {
-                this.textBlock.Text = "Operation cancelled.";
+                textBlock.Text = "Operation cancelled.";
             }
 
 
@@ -85,11 +76,21 @@ namespace UniversalWindows
             var loadExistingData = await test.LoadASync("Settings.xml");
             if (loadExistingData == null)
                 return writeText;
-
-            writeText = loadExistingData.Aggregate(writeText, (current, item) => current + (item.Name + Environment.NewLine));
+            writeText = loadExistingData.Aggregate(writeText, (current, item) => current + (item.Name+","+ item.Email + "," + item.Phone + Environment.NewLine));
 
             return writeText;
         }
 
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            ClearList();
+        }
+
+        public static void ClearList()
+        {
+            var peopleList = new List<PersonModel>();
+            var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
+            storageHelper.SaveASync(peopleList, "Settings");
+        }
     }
 }
