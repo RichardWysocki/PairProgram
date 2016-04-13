@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Advertising.WinRT.UI;
@@ -25,6 +26,19 @@ namespace UniversalWindows
               
         private async void button_Click(object sender, RoutedEventArgs e)
         {
+
+            var dialog = new MessageDialog("Are you sure you want to continue?");
+            dialog.Title = "Continue?";
+            dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = "Cancel", Id = 1 });
+            var res = await dialog.ShowAsync();
+
+            if ((int) res.Id == 1)
+            {
+                return;
+            }
+
+
             var person = new PersonModel(Name.Text, Email.Text, Phone.Text);
 
             if (ValidatePerson(person))
