@@ -98,8 +98,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
+    <Compile Include="ManagementPage.xaml.cs">
+      <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\LocalIsolatedStorage.cs" />
     <Compile Include="Common\StorageHelper.cs" />
@@ -139,7 +139,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="BlankPage1.xaml">
+    <Page Include="ManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
