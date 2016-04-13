@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,7 +17,7 @@ namespace UniversalWindows
     {
         public BlankPage1()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -76,9 +75,15 @@ namespace UniversalWindows
             var loadExistingData = await test.LoadASync("Settings.xml");
             if (loadExistingData == null)
                 return writeText;
-            writeText = loadExistingData.Aggregate(writeText, (current, item) => current + (item.Name+","+ item.Email + "," + item.Phone + Environment.NewLine));
+            foreach (var model in loadExistingData)
+                writeText = writeText + PrintPersonModel(model);
 
             return writeText;
+        }
+
+        private static string PrintPersonModel(PersonModel model)
+        {
+            return (model.Name + "," + model.Email + "," + model.Phone + Environment.NewLine);
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
