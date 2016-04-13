@@ -39,6 +39,7 @@
             <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="250" Grid.Column="2" Grid.ColumnSpan="3" Height="50" FontSize="18.667" Background="White" />
             <TextBox Grid.Row="1" x:Name="Email" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Email" Width="250" Grid.Column="2" FontSize="18.667" Grid.ColumnSpan="3" Margin="0,0,0,24" Background="White"/>
             <TextBox Grid.Row="2" x:Name="Phone" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="250" Grid.Column="2" Height="50" Grid.ColumnSpan="3" FontSize="18.667" Background="White"/>
+            <Button  Grid.Row="3" Grid.Column="2" x:Name="button_Copy" Content="hhhhh" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="150" FontSize="26.667" Background="White" Margin="62.6,107,62.733,-81.667" Click="button_Copy_Click"/>
         </Grid>
     </Grid>
 </Page>

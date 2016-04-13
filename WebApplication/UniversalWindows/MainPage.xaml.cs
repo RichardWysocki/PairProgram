@@ -66,5 +66,10 @@ namespace UniversalWindows
 
             return peopleList;
         }
+
+        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BlankPage1));
+        }
     }
 }
