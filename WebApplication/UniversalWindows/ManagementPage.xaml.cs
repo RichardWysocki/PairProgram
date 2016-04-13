@@ -68,6 +68,16 @@ namespace UniversalWindows
 
         }
 
+        public string WriteData(List<PersonModel> savedUsers)
+        {
+            string writeText = "";
+            if (savedUsers == null)
+                return writeText;
+            foreach (var model in savedUsers)
+                writeText = writeText + PrintPersonModel(model);
+            return writeText;
+        }
+
         public async Task<string> GetData()
         {
             string writeText = "";
@@ -79,6 +89,14 @@ namespace UniversalWindows
                 writeText = writeText + PrintPersonModel(model);
 
             return writeText;
+        }
+
+        public async Task<List<PersonModel>> GetSavedUsers()
+        {
+            var peopleList = new List<PersonModel>();
+            var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
+            peopleList = await test.LoadASync("Settings.xml");
+            return peopleList;
         }
 
         private static string PrintPersonModel(PersonModel model)
@@ -96,6 +114,19 @@ namespace UniversalWindows
             var peopleList = new List<PersonModel>();
             var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
             storageHelper.SaveASync(peopleList, "Settings");
+        }
+
+        private async void WinnerButton_Click(object sender, RoutedEventArgs e)
+        {
+            var savedUsers = await GetSavedUsers();
+            if (savedUsers.Count == 0)
+                return;
+
+            Random x = new Random();            
+            int winner = x.Next(1,savedUsers.Count);
+            winnerTextMessage.Text = "And the Winner is..." + savedUsers[winner-1].Name;
+
+
         }
     }
 }
