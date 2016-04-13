@@ -124,7 +124,7 @@ namespace UniversalWindows
 
             Random x = new Random();            
             int winner = x.Next(1,savedUsers.Count);
-            winnerTextMessage.Text = "And the Winner is..." + savedUsers[winner-1].Name;
+            winnerTextMessage.Text = "And the Winner is..." + savedUsers[winner-1].Name  + " " + savedUsers[winner-1].Email;
 
 
         }
