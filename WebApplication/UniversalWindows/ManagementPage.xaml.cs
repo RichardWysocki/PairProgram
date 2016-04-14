@@ -91,13 +91,13 @@ namespace UniversalWindows
             return writeText;
         }
 
-        public async Task<List<PersonModel>> GetSavedUsers()
-        {
-            var peopleList = new List<PersonModel>();
-            var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
-            peopleList = await test.LoadASync("Settings.xml");
-            return peopleList;
-        }
+        //public async Task<List<PersonModel>> GetSavedUsers()
+        //{
+        //    var peopleList = new List<PersonModel>();
+        //    var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
+        //    peopleList = await test.LoadASync("Settings.xml");
+        //    return peopleList;
+        //}
 
         private static string PrintPersonModel(PersonModel model)
         {
@@ -118,7 +118,7 @@ namespace UniversalWindows
 
         private async void WinnerButton_Click(object sender, RoutedEventArgs e)
         {
-            var savedUsers = await GetSavedUsers();
+            var savedUsers = await ApplicationUtilities.GetSavedUsers();
             if (savedUsers.Count == 0)
                 return;
 
@@ -127,6 +127,11 @@ namespace UniversalWindows
             winnerTextMessage.Text = "And the Winner is..." + savedUsers[winner-1].Name  + " " + savedUsers[winner-1].Email;
 
 
+        }
+
+        private void Exitbutton_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationUtilities.CloseApplication();
         }
     }
 }

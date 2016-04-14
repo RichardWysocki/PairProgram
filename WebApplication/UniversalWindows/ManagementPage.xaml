@@ -17,5 +17,6 @@
         <Button x:Name="button2" Content="Clear List" HorizontalAlignment="Left" Margin="347,273,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.497,1.625" Height="65" Width="217" Click="button2_Click"/>
         <Button x:Name="WinnerButton" Content="Winner is..." HorizontalAlignment="Left" Margin="639,273,0,0" VerticalAlignment="Top" Height="65" Width="177" RenderTransformOrigin="1.094,1.064" Click="WinnerButton_Click"/>
         <TextBlock x:Name="winnerTextMessage" HorizontalAlignment="Left" Margin="77,427,0,0" TextWrapping="Wrap" Text="And the Winner is..." VerticalAlignment="Top"/>
+        <Button x:Name="Exitbutton" Content="Exit TradeShow Wonder" HorizontalAlignment="Left" Margin="639,39,0,0" VerticalAlignment="Top" Click="Exitbutton_Click"/>
     </Grid>
 </Page>
