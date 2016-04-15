@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="UniversalWindows.App">
-      <uap:VisualElements DisplayName="UniversalWindows" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="UniversalWindows" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="TradeShow Wonder" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="TradeShow Wonder will make you &quot;wonder&quot; why you haven't collected the names from tradeshows and events through paper or business cards.  You'll want to use this solution forever." BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
