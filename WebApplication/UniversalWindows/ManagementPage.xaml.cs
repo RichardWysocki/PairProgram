@@ -133,5 +133,10 @@ namespace UniversalWindows
         {
             ApplicationUtilities.CloseApplication();
         }
+
+        private void templatePage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TemplatePage));
+        }
     }
 }

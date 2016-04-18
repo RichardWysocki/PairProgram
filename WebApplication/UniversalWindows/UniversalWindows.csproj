@@ -109,6 +109,9 @@
     </Compile>
     <Compile Include="Model\PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplatePage.xaml.cs">
+      <DependentUpon>TemplatePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -117,6 +120,7 @@
     <None Include="UniversalWindows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\big_gold_star.png" />
     <Content Include="Assets\trade_show_success.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -145,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

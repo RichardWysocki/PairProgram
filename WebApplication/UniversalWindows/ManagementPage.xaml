@@ -16,7 +16,13 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="77,359,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="542"/>
         <Button x:Name="button2" Content="Clear List" HorizontalAlignment="Left" Margin="347,273,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.497,1.625" Height="65" Width="217" Click="button2_Click"/>
         <Button x:Name="WinnerButton" Content="Winner is..." HorizontalAlignment="Left" Margin="639,273,0,0" VerticalAlignment="Top" Height="65" Width="177" RenderTransformOrigin="1.094,1.064" Click="WinnerButton_Click"/>
-        <TextBlock x:Name="winnerTextMessage" HorizontalAlignment="Left" Margin="77,427,0,0" TextWrapping="Wrap" Text="And the Winner is..." VerticalAlignment="Top"/>
         <Button x:Name="Exitbutton" Content="Exit TradeShow Wonder" HorizontalAlignment="Left" Margin="639,39,0,0" VerticalAlignment="Top" Click="Exitbutton_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="328" Margin="959,175,0,0" VerticalAlignment="Top" Width="316" Source="Assets/big_gold_star.png" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Image.RenderTransform>
+                <CompositeTransform Rotation="-23.475"/>
+            </Image.RenderTransform>
+        </Image>
+        <TextBlock x:Name="winnerTextMessage" HorizontalAlignment="Left" Margin="995,343,0,0" TextWrapping="Wrap" Text="And the Winner is..." VerticalAlignment="Top"/>
+        <Button x:Name="templatePage" Content="Button" HorizontalAlignment="Left" Height="41" Margin="639,123,0,0" VerticalAlignment="Top" Width="177" Click="templatePage_Click"/>
     </Grid>
 </Page>
