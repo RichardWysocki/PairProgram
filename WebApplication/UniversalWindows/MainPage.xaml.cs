@@ -64,12 +64,8 @@ namespace UniversalWindows
         {
         }
 
-        private async void OnloadedComplete(object sender, RoutedEventArgs e)
+        private void OnloadedComplete(object sender, RoutedEventArgs e)
         {
-            if (true)
-            {
-                await loadData();
-            }
         }
 
         private async Task<List<PersonModel>> loadData()
@@ -117,10 +113,6 @@ namespace UniversalWindows
                 return true;
             ErrorText.Text = "Please Enter a Valid Email Address...";
             return false;
-            //if (match.Success)
-            //    lbl_message.Text = email + " is Valid Email Address";
-            //else
-            //    lbl_message.Text = email + " is Invalid Email Address";
         }
 
         private bool IsPhone(string strPhone)

@@ -19,8 +19,33 @@ namespace UniversalWindows.Common
         {
             var peopleList = new List<PersonModel>();
             var storage = new StorageHelper<List<PersonModel>>(StorageType.Local);
-            peopleList = await storage.LoadASync("Settings.xml");
+            try
+            {
+                peopleList = await storage.LoadASync(@"Settings.xml");
+            }
+            catch (Exception)
+            {
+                peopleList = null;
+            }
             return peopleList;
+        }
+
+        public static void ClearList()
+        {
+            var peopleList = new List<PersonModel>();
+            var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
+            storageHelper.SaveASync(peopleList, "Settings");
+        }
+
+        public static async Task<string> GetExtractReportData()
+        {
+            var loadExistingData = await GetSavedUsers();
+            return loadExistingData.Aggregate("", (current, model) => current + PrintPersonModel(model));
+        }
+
+        private static string PrintPersonModel(PersonModel model)
+        {
+            return (model.Name + "," + model.Email + "," + model.Phone + Environment.NewLine);
         }
 
     }
