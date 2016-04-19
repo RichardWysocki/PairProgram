@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using UniversalWindows.Common;
+using UniversalWindows.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -11,6 +14,8 @@ namespace UniversalWindows
     // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class ManagementPage : Page
     {
+        List<PersonModel> _savedUsers = new List<PersonModel>();
+
         public ManagementPage()
         {
             InitializeComponent();
@@ -61,9 +66,21 @@ namespace UniversalWindows
 
         }
 
-        private void clearListButton_Click(object sender, RoutedEventArgs e)
+        private async void clearListButton_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationUtilities.ClearList();
+            var dialog = new MessageDialog("Are you sure you want to clear the List?");
+            dialog.Title = "Continue?";
+            dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = "Cancel", Id = 1 });
+            var res = await dialog.ShowAsync();
+
+            if ((int)res.Id == 0)
+            {
+                ApplicationUtilities.ClearList();
+                textBlock.Text = "Your List has been cleared. ";
+                return;
+            }
+            textBlock.Text = "";
         }
 
         private async void WinnerButton_Click(object sender, RoutedEventArgs e)
@@ -74,7 +91,7 @@ namespace UniversalWindows
 
             Random x = new Random();            
             int winner = x.Next(1,savedUsers.Count);
-            winnerTextMessage.Text = "And the Winner is..." + savedUsers[winner-1].Name  + " " + savedUsers[winner-1].Email;
+            winnerTextMessage.Text = "And the Winner is..." + Environment.NewLine + savedUsers[winner-1].Name  + Environment.NewLine + savedUsers[winner-1].Email;
 
 
         }
@@ -89,5 +106,10 @@ namespace UniversalWindows
             Frame.Navigate(typeof(TemplatePage));
         }
 
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            _savedUsers = await ApplicationUtilities.GetSavedUsers();
+            textBlock.Text = "Current Users: " + _savedUsers?.Count.ToString() ?? "0";
+        }
     }
 }
