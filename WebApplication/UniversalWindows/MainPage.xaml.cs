@@ -40,15 +40,18 @@ namespace UniversalWindows
 
 
             var person = new PersonModel(Name.Text, Email.Text, Phone.Text);
+            var validation = new PersonBusiness();
+            var Validate = validation.ValidatePerson(person);
 
-            if (ValidatePerson(person))
-            { 
+
+            if (Validate.isValid)
+            {
                 var loadExistingData = await loadData();
                 var peopleList = new List<PersonModel>();
                 var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
-                
+
                 if (loadExistingData != null)
-                {                
+                {
                     loadExistingData.Add(person);
                     storageHelper.SaveASync(loadExistingData, "Settings");
                 }
@@ -58,6 +61,8 @@ namespace UniversalWindows
                     storageHelper.SaveASync(peopleList, "Settings");
                 }
             }
+            else
+                ErrorText.Text = Validate.errorMessage;
         }
 
         private void AdControl_OnErrorOccurred(object sender, AdErrorEventArgs e)
@@ -66,6 +71,7 @@ namespace UniversalWindows
 
         private void OnloadedComplete(object sender, RoutedEventArgs e)
         {
+            ErrorText.Text = "";
         }
 
         private async Task<List<PersonModel>> loadData()
@@ -89,41 +95,41 @@ namespace UniversalWindows
             Frame.Navigate(typeof(ManagementPage));
         }
 
-        private bool ValidatePerson(PersonModel person)
-        {
-            ClearErrorMessage();
-            return ValidateAllFieldsComplete(person) && ValidateEmail(person.Email) && IsPhone(person.Phone);
-        }
+        //private bool ValidatePerson(PersonModel person)
+        //{
+        //    ClearErrorMessage();
+        //    return ValidateAllFieldsComplete(person) && ValidateEmail(person.Email) && IsPhone(person.Phone);
+        //}
 
-        private bool ValidateAllFieldsComplete(PersonModel person)
-        {
-            var validateName = person.Email.Length > 0 & person.Name.Length > 0 & person.Phone.Length > 0;
-            if (validateName)
-                return true;
-            ErrorText.Text = "Please Complete all fields...";
-            return false;
-        }
+        //private bool ValidateAllFieldsComplete(PersonModel person)
+        //{
+        //    var validateName = person.Email.Length > 0 & person.Name.Length > 0 & person.Phone.Length > 0;
+        //    if (validateName)
+        //        return true;
+        //    ErrorText.Text = "Please Complete all fields...";
+        //    return false;
+        //}
 
-        private bool ValidateEmail(string personEmail)
-        {
-            string email = personEmail;
-            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            Match match = regex.Match(email);
-            if (match.Success)
-                return true;
-            ErrorText.Text = "Please Enter a Valid Email Address...";
-            return false;
-        }
+        //private bool ValidateEmail(string personEmail)
+        //{
+        //    string email = personEmail;
+        //    var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        //    Match match = regex.Match(email);
+        //    if (match.Success)
+        //        return true;
+        //    ErrorText.Text = "Please Enter a Valid Email Address...";
+        //    return false;
+        //}
 
-        private bool IsPhone(string strPhone)
-        {
-            var objPhonePattern = new Regex(@"^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$");
-            var validatePhone = objPhonePattern.IsMatch(strPhone);
-            if (validatePhone)
-                return true;
-            ErrorText.Text = "Please Enter a Valid Phone #...";
-            return false;
-        }
+        //private bool IsPhone(string strPhone)
+        //{
+        //    var objPhonePattern = new Regex(@"^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$");
+        //    var validatePhone = objPhonePattern.IsMatch(strPhone);
+        //    if (validatePhone)
+        //        return true;
+        //    ErrorText.Text = "Please Enter a Valid Phone #...";
+        //    return false;
+        //}
 
         public void ClearErrorMessage()
         {

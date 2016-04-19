@@ -99,6 +99,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\ApplicationUtilities.cs" />
+    <Compile Include="Common\PersonBusiness.cs" />
     <Compile Include="ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\IValidationModel.cs" />
     <Compile Include="Model\PersonModel.cs" />
     <Compile Include="Model\ValidationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
