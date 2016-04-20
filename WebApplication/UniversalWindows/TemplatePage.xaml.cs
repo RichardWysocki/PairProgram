@@ -17,5 +17,10 @@ namespace UniversalWindows
         {
             Frame.Navigate(typeof(ManagementPage));
         }
+
+        private void AdControl_OnErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
+        {
+
+        }
     }
 }
