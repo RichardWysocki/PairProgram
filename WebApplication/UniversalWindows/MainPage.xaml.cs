@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Windows.UI.Popups;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Advertising.WinRT.UI;
@@ -60,22 +57,6 @@ namespace UniversalWindows
             ErrorText.Text = "";
         }
 
-        private async Task<List<PersonModel>> loadData()
-        {
-            var test = new StorageHelper<List<PersonModel>>(StorageType.Local);
-            List<PersonModel> peopleList;
-            try
-            {
-                peopleList = await test.LoadASync(@"Settings.xml");
-            }
-            catch (Exception)
-            {
-                peopleList = null;
-            }
-
-            return peopleList;
-        }
-
         private void NavToManagement_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ManagementPage));
@@ -93,5 +74,19 @@ namespace UniversalWindows
             ErrorText.Text = "";
         }
 
+        private void Name_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ClearErrorMessage();
+        }
+
+        private void Email_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ClearErrorMessage();
+        }
+
+        private void Phone_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ClearErrorMessage();
+        }
     }
 }

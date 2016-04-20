@@ -37,9 +37,9 @@
 
             <TextBlock x:Name="ErrorText" Grid.Row="3" Grid.Column="1" Text="loading..." FontWeight="Bold" Margin="77,5,257.333,41.333" FontSize="18.667" Foreground="#FFFC0909" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
             <Button  Grid.Row="3" Grid.Column="2" x:Name="button" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Center" Click="button_Click" Height="50" Width="150" FontSize="26.667" Background="White" Margin="90,39,85.333,-13.667"/>
-            <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Grid.Column="2" Grid.ColumnSpan="3" Height="50" FontSize="18.667" Background="White" TextAlignment="Left" />
-            <TextBox Grid.Row="1" x:Name="Email" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="300" Grid.Column="2" FontSize="18.667" Grid.ColumnSpan="3" Margin="0,0,0,24" Background="White" TextAlignment="Left"/>
-            <TextBox Grid.Row="2" x:Name="Phone" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Grid.Column="2" Height="50" Grid.ColumnSpan="3" FontSize="18.667" Background="White" TextAlignment="Left"/>
+            <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Grid.Column="2" Grid.ColumnSpan="3" Height="50" FontSize="18.667" Background="White" TextAlignment="Left" GotFocus="Name_GotFocus" />
+            <TextBox Grid.Row="1" x:Name="Email" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="300" Grid.Column="2" FontSize="18.667" Grid.ColumnSpan="3" Margin="0,0,0,24" Background="White" TextAlignment="Left" GotFocus="Email_GotFocus"/>
+            <TextBox Grid.Row="2" x:Name="Phone" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Grid.Column="2" Height="50" Grid.ColumnSpan="3" FontSize="18.667" Background="White" TextAlignment="Left" GotFocus="Phone_GotFocus"/>
             <Button  Grid.Row="3" Grid.Column="2" x:Name="NavToManagement" Content="Go to Management" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="265" FontSize="26.667" Background="White" Margin="35,107,25.333,-81.667" Click="NavToManagement_Click"/>
         </Grid>
     </Grid>
