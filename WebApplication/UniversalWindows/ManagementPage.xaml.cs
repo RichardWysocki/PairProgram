@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -109,7 +108,7 @@ namespace UniversalWindows
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             _savedUsers = await ApplicationUtilities.GetSavedUsers();
-            textBlock.Text = "Current Users: " + _savedUsers?.Count.ToString() ?? "0";
+            textBlock.Text = "Current Users: " + _savedUsers?.Count ?? "0";
         }
     }
 }

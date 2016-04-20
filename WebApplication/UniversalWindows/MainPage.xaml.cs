@@ -12,9 +12,6 @@ using PersonModel = UniversalWindows.Model.PersonModel;
 
 namespace UniversalWindows
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class MainPage : Page
     {
@@ -25,39 +22,24 @@ namespace UniversalWindows
               
         private async void button_Click(object sender, RoutedEventArgs e)
         {
-
-            var dialog = new MessageDialog("Are you sure you want to continue?");
-            dialog.Title = "Continue?";
-            dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
-            dialog.Commands.Add(new UICommand { Label = "Cancel", Id = 1 });
-            var res = await dialog.ShowAsync();
-
-            if ((int) res.Id == 1)
-            {
-                return;
-            }
-
-
             var person = new PersonModel(Name.Text, Email.Text, Phone.Text);
             var validation = new PersonBusiness();
             var validate = validation.ValidatePerson(person);
 
-
             if (validate.isValid)
             {
-                var loadExistingData = await loadData();
-                var peopleList = new List<PersonModel>();
+                var loadExistingData = await ApplicationUtilities.GetSavedUsers();                
                 var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
 
-                if (loadExistingData != null)
+                if (loadExistingData == null)
                 {
-                    loadExistingData.Add(person);
-                    storageHelper.SaveASync(loadExistingData, "Settings");
+                    var peopleList = new List<PersonModel> {person};
+                    storageHelper.SaveASync(peopleList, "Settings");
                 }
                 else
                 {
-                    peopleList.Add(person);
-                    storageHelper.SaveASync(peopleList, "Settings");
+                    loadExistingData.Add(person);
+                    storageHelper.SaveASync(loadExistingData, "Settings");
                 }
             }
             else
