@@ -28,7 +28,7 @@ namespace UniversalWindows
 
             if (validate.isValid)
             {
-                var loadExistingData = await ApplicationUtilities.GetSavedUsers();                
+                var loadExistingData = await ApplicationUtilities.GetSavedUsers();
                 var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
 
                 if (loadExistingData == null)
@@ -41,9 +41,14 @@ namespace UniversalWindows
                     loadExistingData.Add(person);
                     storageHelper.SaveASync(loadExistingData, "Settings");
                 }
+                ErrorText.Text = "Saved...";
+                ClearUserEntry();
             }
             else
-                ErrorText.Text = validate.errorMessage;
+            {
+                ErrorText.Text = validate.errorMessage;                 
+            }
+                
         }
 
         private void AdControl_OnErrorOccurred(object sender, AdErrorEventArgs e)
@@ -74,6 +79,13 @@ namespace UniversalWindows
         private void NavToManagement_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ManagementPage));
+        }
+
+        public void ClearUserEntry()
+        {
+            Name.Text = "";
+            Email.Text = "";
+            Phone.Text = "";
         }
 
         public void ClearErrorMessage()
