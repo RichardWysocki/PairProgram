@@ -85,7 +85,7 @@ namespace UniversalWindows
         private async void WinnerButton_Click(object sender, RoutedEventArgs e)
         {
             var savedUsers = await ApplicationUtilities.GetSavedUsers();
-            if (savedUsers.Count == 0)
+            if (savedUsers == null || savedUsers.Count == 0)
                 return;
 
             Random x = new Random();            
