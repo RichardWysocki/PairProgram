@@ -96,6 +96,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Assets\SplashScreen.scale-200.design" />
+    <None Include="Assets\Square150x150Logo.scale-200.design" />
+    <None Include="Assets\Square44x44Logo.scale-200.design" />
+    <None Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.design" />
+    <None Include="Assets\StoreLogo.design" />
+    <None Include="Assets\Wide310x150Logo.scale-200.design" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
