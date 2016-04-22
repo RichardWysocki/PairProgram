@@ -5,7 +5,7 @@
   <Properties>
     <DisplayName>TradeShow Wonder</DisplayName>
     <PublisherDisplayName>ConstantLearnings</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\TSWStoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
@@ -15,10 +15,14 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="UniversalWindows.App">
-      <uap:VisualElements DisplayName="TradeShow Wonder" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="TradeShow Wonder will make you &quot;wonder&quot; why you haven't collected the names from tradeshows and events through paper or business cards.  You'll want to use this solution forever." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="TradeShow Wonder" Square150x150Logo="Assets\TSWSquare150x150Logo.png" Square44x44Logo="Assets\TSWSquare44x44Logo.png" Description="TradeShow Wonder will make you &quot;wonder&quot; why you haven't collected the names from tradeshows and events through paper or business cards.  You'll want to use this solution forever." BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\TSWWide310x150Logo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\TSWSplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
