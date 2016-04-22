@@ -16,7 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>UniversalWindows_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>UniversalWindows_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>CA70D997F0DD3CDC55400C4E005001E0C29AA9B0</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -120,11 +124,19 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="UniversalWindows_StoreKey.pfx" />
     <None Include="UniversalWindows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\big_gold_star.png" />
     <Content Include="Assets\trade_show_success.jpg" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Assets\TSWSplashScreen.scale-200.png" />
+    <Content Include="Assets\TSWSquare150x150Logo.scale-200.png" />
+    <Content Include="Assets\TSWSquare44x44Logo.scale-200.png" />
+    <Content Include="Assets\TSWSquare44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\TSWStoreLogo.png" />
+    <Content Include="Assets\TSWWide310x150Logo.scale-200.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
