@@ -22,7 +22,7 @@ namespace UniversalWindows
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(TemplatePage));
         }
 
         private async void SaveUserListButton_Click(object sender, RoutedEventArgs e)

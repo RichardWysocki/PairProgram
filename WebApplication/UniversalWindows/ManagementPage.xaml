@@ -23,6 +23,6 @@
             </Image.RenderTransform>
         </Image>
         <TextBlock x:Name="winnerTextMessage" HorizontalAlignment="Left" Margin="665,315,0,0" TextWrapping="Wrap" Text="And the Winner is..." VerticalAlignment="Top"/>
-        <Button x:Name="templatePage" Content="Button" HorizontalAlignment="Left" Height="41" Margin="639,123,0,0" VerticalAlignment="Top" Width="177" Click="templatePage_Click"/>
+        <Button x:Name="templatePage" Content="Button" HorizontalAlignment="Left" Height="41" Margin="639,123,0,0" VerticalAlignment="Top" Width="177" Click="templatePage_Click" Visibility="Collapsed"/>
     </Grid>
 </Page>
