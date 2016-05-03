@@ -89,15 +89,25 @@ namespace UniversalWindows
                 return;
 
             Random x = new Random();            
-            int winner = x.Next(1,savedUsers.Count);
+            int winner = x.Next(1,savedUsers.Count+1);
             winnerTextMessage.Text = "And the Winner is..." + Environment.NewLine + savedUsers[winner-1].Name  + Environment.NewLine + savedUsers[winner-1].Email;
 
 
         }
 
-        private void Exitbutton_Click(object sender, RoutedEventArgs e)
+        private async void Exitbutton_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationUtilities.CloseApplication();
+            var dialog = new MessageDialog("Are you sure you want to Exit TradeShow Wonder?");
+            dialog.Title = "Continue?";
+            dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = "Cancel", Id = 1 });
+            var res = await dialog.ShowAsync();
+
+            if ((int)res.Id == 0)
+            {
+                ApplicationUtilities.CloseApplication();
+            }
+            
         }
 
         private void templatePage_Click(object sender, RoutedEventArgs e)

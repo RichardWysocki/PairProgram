@@ -7,7 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d" Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <MenuFlyout x:Key="ImageMenuFlyout" Placement="Bottom">
+            <MenuFlyout.MenuFlyoutPresenterStyle>
+                <Style TargetType="MenuFlyoutPresenter">
+                    <Setter Property="BorderBrush" Value="CornflowerBlue"/>
+                    <Setter Property="BorderThickness" Value="5"/>
+                </Style>
+            </MenuFlyout.MenuFlyoutPresenterStyle>
+            <!--<MenuFlyoutItem Text="Stretch" IsEnabled="False"/>-->
+            <MenuFlyoutItem Text="Setup" Click="Reset_Click"/>
+        </MenuFlyout>
+    </Page.Resources>
     <Grid BorderThickness="20" CornerRadius="15">
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/trade_show_success.jpg"
@@ -33,13 +44,26 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Row="0" Column="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40">
-                    <Image Source="Assets/big_gold_star.png" DoubleTapped="Image_DoubleTapped" RenderTransformOrigin="1,1" />
+                    <!--<Button Content="Options">
+                        <Button.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Reset" Click="Reset_Click"/>
+                                --><!--<MenuFlyoutSeparator/>
+                                <ToggleMenuFlyoutItem Text="Shuffle" 
+                IsChecked="{Binding IsShuffleEnabled, Mode=TwoWay}"/>
+                                <ToggleMenuFlyoutItem Text="Repeat" 
+                IsChecked="{Binding IsRepeatEnabled, Mode=TwoWay}"/>--><!--
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>-->
+                    <Image Source="Assets/arrow.png" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout}" Tapped="Image_Tapped" />
+                    <!--<Image Source="Assets/big_gold_star.png" DoubleTapped="Image_DoubleTapped" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout}" />-->
                 </Grid>
                 <Grid Row="0" Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="292">
                     <TextBlock Text="TradeShow Wonder" HorizontalAlignment="Left" Width="161" VerticalAlignment="Center" Margin="20,0,0,0" />
                 </Grid>
                 <Grid Row="0" Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500" Height="20" Margin="0,10">
-                    <TextBlock x:Name="ErrorMessageTextBlock" Text="Error Message" HorizontalAlignment="Left" Width="470" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#FFFD0404" />
+                    <TextBlock x:Name="ErrorMessageTextBlock" Text="Error Message" HorizontalAlignment="Left" Width="434" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#FFFD0404" />
                 </Grid>
             </Grid>
             <Grid Margin="10,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="2">
@@ -68,7 +92,7 @@
 
                 <TextBlock x:Name="PhoneNumberLabel" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="Phone #:" VerticalAlignment="Top" Margin="20,0,0,0" FontSize="21.333"/>
                 <TextBox Grid.Column="2" Grid.Row="2" x:Name="PhoneNumberTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,0,20,0" FontSize="26.667" GotFocus="PhoneNumberTextBox_GotFocus"/>
-                <Button x:Name="saveButton" Content="Save" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Height="50" Background="White" Click="saveButton_Click"/>
+                <Button x:Name="saveButton" Content="Save" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Height="40" Background="White" Click="saveButton_Click" Margin="288,-74,0,0"/>
 
             </Grid>
             <Grid Margin="10,0,0,0" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="2">

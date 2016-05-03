@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
+using Microsoft.Advertising.WinRT.UI;
 using UniversalWindows.Common;
 using UniversalWindows.Model;
 
@@ -21,22 +24,22 @@ namespace UniversalWindows
             Frame.Navigate(typeof(ManagementPage));
         }
 
-        private void AdControl_OnErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
+        private void AdControl_OnErrorOccurred(object sender, AdErrorEventArgs e)
         {
 
         }
 
-        private void PhoneNumberTextBox_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            ClearErrorMessage();
-        }
-
-        private void emailAddressTextBox_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void PhoneNumberTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             ClearErrorMessage();
         }
 
-        private void firstNameTextBox_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void emailAddressTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ClearErrorMessage();
+        }
+
+        private void firstNameTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             ClearErrorMessage();
         }
@@ -53,12 +56,12 @@ namespace UniversalWindows
             ErrorMessageTextBlock.Text = "";
         }
 
-        private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ClearErrorMessage();
         }
 
-        private async void saveButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void saveButton_Click(object sender, RoutedEventArgs e)
         {
             var person = new PersonModel(firstNameTextBox.Text, emailAddressTextBox.Text, PhoneNumberTextBox.Text);
             var validation = new PersonBusiness();
@@ -86,6 +89,17 @@ namespace UniversalWindows
             {
                 ErrorMessageTextBlock.Text = validate.errorMessage;
             }
+            saveButton.Focus(FocusState.Keyboard);
+        }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ManagementPage));
+        }
+
+        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 }
