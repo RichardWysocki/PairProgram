@@ -19,11 +19,6 @@ namespace UniversalWindows
             InitializeComponent();
         }
 
-        private void Image_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ManagementPage));
-        }
-
         private void AdControl_OnErrorOccurred(object sender, AdErrorEventArgs e)
         {
 
