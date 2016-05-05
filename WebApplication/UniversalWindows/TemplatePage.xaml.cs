@@ -96,5 +96,10 @@ namespace UniversalWindows
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
+
+        private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ManagementPage));
+        }
     }
 }
