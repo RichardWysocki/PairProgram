@@ -8,6 +8,25 @@
     xmlns:ui="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d" Loaded="Page_Loaded">
     <Page.Resources>
+        <Flyout  x:Key="ImageMenuFlyout2" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                    <Setter Property="IsTabStop" Value="True"/>
+                    <Setter Property="TabNavigation" Value="Cycle"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel>
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}">
+                    All items will be permanently removed from your cart.
+                </TextBlock>
+                <TextBox x:Name="SecurityInput" Text="12345" />
+                <Button Click="DeleteConfirmation_Click" Margin="0,5,0,0">
+                    Enter Management Console
+                </Button>
+            </StackPanel>
+        </Flyout>
         <MenuFlyout x:Key="ImageMenuFlyout" Placement="Bottom">
             <MenuFlyout.MenuFlyoutPresenterStyle>
                 <Style TargetType="MenuFlyoutPresenter">
@@ -56,7 +75,7 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>-->
-                    <Image Source="Assets/arrow.png" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout}" Tapped="Image_Tapped" />
+                    <Image Source="Assets/arrow.png" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout2}" Tapped="Image_Tapped" />
                     <!--<Image Source="Assets/big_gold_star.png" DoubleTapped="Image_DoubleTapped" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout}" />-->
                 </Grid>
                 <Grid Row="0" Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="292">
