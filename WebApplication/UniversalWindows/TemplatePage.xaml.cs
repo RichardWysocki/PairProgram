@@ -102,5 +102,11 @@ namespace UniversalWindows
         {
             Frame.Navigate(typeof(ManagementPage));
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new System.NotImplementedException();
+            
+        }
     }
 }
