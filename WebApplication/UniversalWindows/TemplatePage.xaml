@@ -38,6 +38,19 @@
             <MenuFlyoutItem Text="Setup" Click="Reset_Click"/>
         </MenuFlyout>
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Label="appbarbutton"/>
+            <AppBarButton Icon="Cancel" Label="appbarbutton"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Like" Label="Like" Click="AppBarButton_Click"/>
+                <AppBarButton Icon="Dislike" Label="Dislike" Click="AppBarButton_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid BorderThickness="20" CornerRadius="15">
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/trade_show_success.jpg"
@@ -63,20 +76,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Row="0" Column="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40">
-                    <!--<Button Content="Options">
-                        <Button.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Text="Reset" Click="Reset_Click"/>
-                                --><!--<MenuFlyoutSeparator/>
-                                <ToggleMenuFlyoutItem Text="Shuffle" 
-                IsChecked="{Binding IsShuffleEnabled, Mode=TwoWay}"/>
-                                <ToggleMenuFlyoutItem Text="Repeat" 
-                IsChecked="{Binding IsRepeatEnabled, Mode=TwoWay}"/>--><!--
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>-->
                     <Image Source="Assets/arrow.png" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout2}" Tapped="Image_Tapped" />
-                    <!--<Image Source="Assets/big_gold_star.png" DoubleTapped="Image_DoubleTapped" RenderTransformOrigin="1,1" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout}" />-->
                 </Grid>
                 <Grid Row="0" Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="292">
                     <TextBlock Text="TradeShow Wonder" HorizontalAlignment="Left" Width="161" VerticalAlignment="Center" Margin="20,0,0,0" />
