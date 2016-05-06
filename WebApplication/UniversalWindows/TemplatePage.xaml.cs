@@ -54,6 +54,7 @@ namespace UniversalWindows
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ClearErrorMessage();
+            saveButton.Focus(FocusState.Keyboard);
         }
 
         private async void saveButton_Click(object sender, RoutedEventArgs e)
