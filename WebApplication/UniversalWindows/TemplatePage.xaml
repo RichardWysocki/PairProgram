@@ -21,7 +21,7 @@
                 <TextBlock Style="{StaticResource BaseTextBlockStyle}">
                     All items will be permanently removed from your cart.
                 </TextBlock>
-                <TextBox x:Name="SecurityInput" Text="12345" />
+                <TextBox x:Name="SecurityInput" Text="12345"  />
                 <Button Click="DeleteConfirmation_Click" Margin="0,5,0,0">
                     Enter Management Console
                 </Button>
