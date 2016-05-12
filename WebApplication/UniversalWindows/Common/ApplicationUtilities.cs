@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +48,22 @@ namespace UniversalWindows.Common
         private static string PrintPersonModel(PersonModel model)
         {
             return (model.Name + "," + model.Email + "," + model.Phone + Environment.NewLine);
+        }
+
+
+         public static void SaveToIsolatedStorage(Stream imageStream, string fileName)
+        {
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists(fileName))
+                {
+                    myIsolatedStorage.DeleteFile(fileName);
+                }
+
+                IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
+                imageStream.CopyTo(fileStream);
+                fileStream.Flush();
+            }
         }
 
     }

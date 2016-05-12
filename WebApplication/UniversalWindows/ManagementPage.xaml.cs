@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 using UniversalWindows.Common;
 using UniversalWindows.Model;
 
@@ -119,6 +124,50 @@ namespace UniversalWindows
         {
             _savedUsers = await ApplicationUtilities.GetSavedUsers();
             textBlock.Text = "Current Users: " + _savedUsers?.Count ?? "0";
+        }
+
+        private async void CompanyImage_Click(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker open = new FileOpenPicker();
+
+            open.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+
+            open.ViewMode = PickerViewMode.Thumbnail;
+
+            // Filter to include a sample subset of file types
+
+            open.FileTypeFilter.Clear();
+
+            open.FileTypeFilter.Add(".bmp");
+
+            open.FileTypeFilter.Add(".png");
+
+            open.FileTypeFilter.Add(".jpeg");
+
+            open.FileTypeFilter.Add(".jpg");
+            StorageFile file = await open.PickSingleFileAsync();
+            if (file != null)
+
+            {
+                FilePath.Text = file.Path;
+                using (IRandomAccessStream fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
+
+                {
+
+                    BitmapImage bitmapImage = new BitmapImage();
+
+                    bitmapImage.DecodePixelHeight = 300;
+
+                    bitmapImage.DecodePixelWidth = 300;
+
+                    await bitmapImage.SetSourceAsync(fileStream);
+
+                    image.Source = bitmapImage;
+
+                }
+
+            }
+
         }
     }
 }
