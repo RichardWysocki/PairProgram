@@ -108,19 +108,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\ApplicationUtilities.cs" />
-    <Compile Include="Common\PersonBusiness.cs" />
     <Compile Include="ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\LocalIsolatedStorage.cs" />
-    <Compile Include="Common\StorageHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\IValidationModel.cs" />
-    <Compile Include="Model\PersonModel.cs" />
-    <Compile Include="Model\ValidationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplatePage.xaml.cs">
       <DependentUpon>TemplatePage.xaml</DependentUpon>
@@ -190,6 +183,7 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

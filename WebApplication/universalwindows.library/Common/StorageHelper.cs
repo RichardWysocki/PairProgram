@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace UniversalWindows.Common
+namespace universalwindows.library.Common
 {
   
     public enum StorageType
@@ -15,12 +15,12 @@ namespace UniversalWindows.Common
     public class StorageHelper<T>
     {
         private ApplicationData appData = ApplicationData.Current;
-        private static XmlSerializer serializer;
+        private static XmlSerializer _serializer;
         private StorageType storageType;
 
         public StorageHelper(StorageType StorageType)
         {
-            serializer = new XmlSerializer(typeof(T));
+            _serializer = new XmlSerializer(typeof(T));
             storageType = StorageType;
         }
 
@@ -48,7 +48,7 @@ namespace UniversalWindows.Common
 
                     using (Stream stream = await file.OpenStreamForWriteAsync())
                     {
-                        serializer.Serialize(stream, obj);
+                        _serializer.Serialize(stream, obj);
                     }                    
                 }
             }
@@ -69,7 +69,7 @@ namespace UniversalWindows.Common
                 file = await folder.GetFileAsync(fileName);
                 IRandomAccessStream readStream = await file.OpenAsync(FileAccessMode.Read);
                 Stream inStream = Task.Run(() => readStream.AsStreamForRead()).Result;
-                return (T)serializer.Deserialize(inStream);
+                return (T)_serializer.Deserialize(inStream);
             }
             catch (FileNotFoundException)
             {

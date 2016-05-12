@@ -2,48 +2,43 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 
-namespace WPApplication.Class
+namespace universalwindows.library.Common
 {
     public class LocalIsolatedStorage
     {
-        public  LocalIsolatedStorage()
-        {
-            
-        }
-
-        public void SaveClientID(string clientID)
+        public void SaveClientId(string clientId)
         {
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 isf.CreateDirectory("Data");
                 using (StreamWriter sw = new StreamWriter(new IsolatedStorageFileStream("Data\\CientID.txt", FileMode.Create, isf)))
                 {
-                    sw.WriteLine(clientID);
+                    sw.WriteLine(clientId);
                 }
             }
         }
 
-        public string LoadClientID()
+        public string LoadClientId()
         {
-            string _clientID = null;
+            string clientId;
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                StreamReader sr = null;
+                StreamReader sr;
                 try
                 {
                     sr = new StreamReader(new IsolatedStorageFileStream("Data\\CientID.txt", FileMode.Open, isf));
-                    _clientID = sr.ReadLine();
+                    clientId = sr.ReadLine();
                     //sr.Close();
                 }
                 catch (Exception)
                 {
 
-                    _clientID = null;
+                    clientId = null;
                 }
 
             }
-            return _clientID;
+            return clientId;
         }
 
     }

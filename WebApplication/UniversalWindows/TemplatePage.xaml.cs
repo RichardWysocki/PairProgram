@@ -4,8 +4,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Microsoft.Advertising.WinRT.UI;
-using UniversalWindows.Common;
-using UniversalWindows.Model;
+using universalwindows.library.Common;
+using universalwindows.library.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -63,7 +63,7 @@ namespace UniversalWindows
             var validation = new PersonBusiness();
             var validate = validation.ValidatePerson(person);
 
-            if (validate.isValid)
+            if (validate.IsValid)
             {
                 var loadExistingData = await ApplicationUtilities.GetSavedUsers();
                 var storageHelper = new StorageHelper<List<PersonModel>>(StorageType.Local);
@@ -83,7 +83,7 @@ namespace UniversalWindows
             }
             else
             {
-                ErrorMessageTextBlock.Text = validate.errorMessage;
+                ErrorMessageTextBlock.Text = validate.ErrorMessage;
             }
             saveButton.Focus(FocusState.Keyboard);
         }
@@ -105,8 +105,7 @@ namespace UniversalWindows
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            //throw new System.NotImplementedException();
-            
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 }

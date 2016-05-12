@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using UniversalWindows.Model;
+using universalwindows.library.Models;
 
-namespace UniversalWindows.Common
+namespace universalwindows.library.Common
 {
     public class ApplicationUtilities
     {
@@ -19,6 +18,7 @@ namespace UniversalWindows.Common
 
         public static async Task<List<PersonModel>> GetSavedUsers()
         {
+            // ReSharper disable once RedundantAssignment
             var peopleList = new List<PersonModel>();
             var storage = new StorageHelper<List<PersonModel>>(StorageType.Local);
             try
