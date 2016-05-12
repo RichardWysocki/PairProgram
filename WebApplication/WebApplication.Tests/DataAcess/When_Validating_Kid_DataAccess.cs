@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace WebApplication.Tests.DataAcess
 {
@@ -11,7 +6,7 @@ namespace WebApplication.Tests.DataAcess
     [TestFixture]
     public class When_Validating_Kid_DataAccess
     {
-        [Test]
+        [Test, Ignore("Not setup yet")]
         public void NoRecord_KidDataAccessAdd_ThrowError()
         {
 
