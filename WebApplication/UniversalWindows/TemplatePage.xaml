@@ -19,7 +19,7 @@
             </Flyout.FlyoutPresenterStyle>
             <StackPanel>
                 <TextBlock Style="{StaticResource BaseTextBlockStyle}">
-                    All items will be permanently removed from your cart.
+                    Enter Management Password:
                 </TextBlock>
                 <TextBox x:Name="SecurityInput" Text="12345"  />
                 <Button Click="DeleteConfirmation_Click" Margin="0,5,0,0">
@@ -43,7 +43,7 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="Accept" Label="appbarbutton" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout2}" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Admin" Label="Admin" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout2}" Click="AppBarButton_Click"/>
             <!--<AppBarButton Icon="Cancel" Label="appbarbutton"/>
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Like" Label="Like" Click="AppBarButton_Click"/>

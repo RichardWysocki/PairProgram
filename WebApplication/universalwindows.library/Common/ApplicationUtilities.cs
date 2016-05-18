@@ -50,7 +50,6 @@ namespace universalwindows.library.Common
             return (model.Name + "," + model.Email + "," + model.Phone + Environment.NewLine);
         }
 
-
          public static void SaveToIsolatedStorage(Stream imageStream, string fileName)
         {
             using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
