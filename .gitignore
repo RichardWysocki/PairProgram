@@ -33,3 +33,7 @@ _ReSharper*/
 *.[Rr]e[Ss]harper
 *.zip
 *.[Pp]ublish.xml
+/WebApplication/WebApplication/Properties/PublishProfiles/WinHost_FTP.pubxml
+/WebApplication/WebApplication/Web_Copy.txt
+/WebApplication/WebApplication.Database/WebApplication.Database.dbmdl
+/WebApplication/WebApplication/App_Data

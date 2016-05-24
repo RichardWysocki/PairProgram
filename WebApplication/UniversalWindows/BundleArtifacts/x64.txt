@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Richard\Source\Repos\PairProgram\WebApplication\UniversalWindows\bin\x64\Release\UniversalWindows_1.1.9.0_x64.appx
+SymbolPackage=C:\Users\Richard\Source\Repos\PairProgram\WebApplication\UniversalWindows\AppPackages\UniversalWindows_1.1.9.0_Test\UniversalWindows_1.1.9.0_x64.appxsym

@@ -108,7 +108,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Common\ApplicationUtilities.cs" />
+    <Compile Include="Common\IPersonBusiness.cs" />
+    <Compile Include="Common\LocalIsolatedStorage.cs" />
+    <Compile Include="Common\PersonBusiness.cs" />
+    <Compile Include="Common\StorageHelper.cs" />
+    <Compile Include="Models\IValidationModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\ValidationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\universalwindows.library.rd.xml" />
   </ItemGroup>

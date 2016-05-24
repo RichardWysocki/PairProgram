@@ -19,15 +19,15 @@
             </Flyout.FlyoutPresenterStyle>
             <StackPanel>
                 <TextBlock Style="{StaticResource BaseTextBlockStyle}">
-                    All items will be permanently removed from your cart.
+                    Enter Management Password:
                 </TextBlock>
-                <TextBox x:Name="SecurityInput" Text="12345" />
+                <TextBox x:Name="SecurityInput" Text="12345"  />
                 <Button Click="DeleteConfirmation_Click" Margin="0,5,0,0">
                     Enter Management Console
                 </Button>
             </StackPanel>
         </Flyout>
-        <MenuFlyout x:Key="ImageMenuFlyout" Placement="Bottom">
+        <MenuFlyout x:Key="ImageMenuFlyout" Placement="Top">
             <MenuFlyout.MenuFlyoutPresenterStyle>
                 <Style TargetType="MenuFlyoutPresenter">
                     <Setter Property="BorderBrush" Value="CornflowerBlue"/>
@@ -43,12 +43,12 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="Accept" Label="appbarbutton"/>
-            <AppBarButton Icon="Cancel" Label="appbarbutton"/>
+            <AppBarButton Icon="Admin" Label="Admin" FlyoutBase.AttachedFlyout="{StaticResource ImageMenuFlyout2}" Click="AppBarButton_Click"/>
+            <!--<AppBarButton Icon="Cancel" Label="appbarbutton"/>
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Like" Label="Like" Click="AppBarButton_Click"/>
                 <AppBarButton Icon="Dislike" Label="Dislike" Click="AppBarButton_Click"/>
-            </CommandBar.SecondaryCommands>
+            </CommandBar.SecondaryCommands>-->
         </CommandBar>
     </Page.BottomAppBar>
     <Grid BorderThickness="20" CornerRadius="15">
@@ -82,7 +82,7 @@
                     <TextBlock Text="TradeShow Wonder" HorizontalAlignment="Left" Width="161" VerticalAlignment="Center" Margin="20,0,0,0" />
                 </Grid>
                 <Grid Row="0" Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500" Height="20" Margin="0,10">
-                    <TextBlock x:Name="ErrorMessageTextBlock" Text="Error Message" HorizontalAlignment="Left" Width="434" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#FFFD0404" />
+                    <TextBlock x:Name="ErrorMessageTextBlock" Text="Error Message" HorizontalAlignment="Left" Width="434" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="#FFFD0404" FontWeight="Bold" FontSize="18.667" />
                 </Grid>
             </Grid>
             <Grid Margin="10,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="2">
@@ -111,7 +111,7 @@
 
                 <TextBlock x:Name="PhoneNumberLabel" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="Phone #:" VerticalAlignment="Top" Margin="20,0,0,0" FontSize="21.333"/>
                 <TextBox Grid.Column="2" Grid.Row="2" x:Name="PhoneNumberTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,0,20,0" FontSize="26.667" GotFocus="PhoneNumberTextBox_GotFocus"/>
-                <Button x:Name="saveButton" Content="Save" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Height="40" Background="White" Click="saveButton_Click" Margin="288,-74,0,0"/>
+                <Button x:Name="saveButton" Content="Save" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Height="40" Click="saveButton_Click" Margin="288,-74,0,0" Background="#FF07FC13"/>
 
             </Grid>
             <Grid Margin="10,0,0,0" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="2">
