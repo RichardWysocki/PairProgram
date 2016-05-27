@@ -26,5 +26,6 @@
         <Button x:Name="templatePage" Content="Button" HorizontalAlignment="Left" Height="41" Margin="639,123,0,0" VerticalAlignment="Top" Width="177" Click="templatePage_Click" Visibility="Collapsed"/>
         <Button x:Name="CompanyImage" Content="Company Image" HorizontalAlignment="Left" Margin="326,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.366,-0.953" Height="41" Click="CompanyImage_Click"/>
         <TextBox x:Name="FilePath" HorizontalAlignment="Left" Margin="85,406,0,0" TextWrapping="Wrap" Text="FilePath" VerticalAlignment="Top" Width="370"/>
+        <Button x:Name="SaveManageSettings" Content="Button" HorizontalAlignment="Left" Margin="85,458,0,0" VerticalAlignment="Top" Click="SaveManageSettings_Click"/>
     </Grid>
 </Page>

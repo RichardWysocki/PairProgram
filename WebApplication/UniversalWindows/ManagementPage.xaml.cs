@@ -129,45 +129,40 @@ namespace UniversalWindows
         private async void CompanyImage_Click(object sender, RoutedEventArgs e)
         {
             FileOpenPicker open = new FileOpenPicker();
-
             open.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-
             open.ViewMode = PickerViewMode.Thumbnail;
-
             // Filter to include a sample subset of file types
-
             open.FileTypeFilter.Clear();
-
-            open.FileTypeFilter.Add(".bmp");
-
             open.FileTypeFilter.Add(".png");
-
-            open.FileTypeFilter.Add(".jpeg");
-
-            open.FileTypeFilter.Add(".jpg");
+            //open.FileTypeFilter.Add(".jpeg");
+            //open.FileTypeFilter.Add(".jpg");
             StorageFile file = await open.PickSingleFileAsync();
             if (file != null)
-
             {
-                FilePath.Text = file.Path;
+                FilePath.Text = file.Name;
                 using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
-
                 {
-
                     BitmapImage bitmapImage = new BitmapImage();
-
                     bitmapImage.DecodePixelHeight = 300;
-
                     bitmapImage.DecodePixelWidth = 300;
-
                     await bitmapImage.SetSourceAsync(fileStream);
-
                     image.Source = bitmapImage;
-
                 }
+                try
+                {
+                    await file.CopyAsync(ApplicationData.Current.LocalFolder);
+                }
+                finally
+                { }
 
             }
+        }
 
+        private void SaveManageSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var appSettings = new AppModel("12345",FilePath.Text);
+            var storageHelper = new StorageHelper<AppModel>(StorageType.Local);
+            storageHelper.SaveASync(appSettings, "AppSetting");
         }
     }
 }

@@ -32,6 +32,22 @@ namespace universalwindows.library.Common
             return peopleList;
         }
 
+        public static async Task<AppModel> GetAppSettings()
+        {
+            // ReSharper disable once RedundantAssignment
+            var appModel = new AppModel();
+            var storage = new StorageHelper<AppModel>(StorageType.Local);
+            try
+            {
+                appModel = await storage.LoadASync(@"AppSetting.xml");
+            }
+            catch (Exception)
+            {
+                appModel = null;
+            }
+            return appModel;
+        }
+
         public static void ClearList()
         {
             var peopleList = new List<PersonModel>();
