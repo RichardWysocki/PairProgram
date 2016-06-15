@@ -64,18 +64,24 @@ namespace UniversalWindows
             if (_savedAppSettings != null && _savedAppSettings.CompanyImage.Length > 0)
             {
                 Uri uri = new Uri(@"ms-appdata:///local/" + _savedAppSettings.CompanyImage, UriKind.Absolute);
-                //new BitmapImage(uri);
-                var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
-                using (var fileStream = await file.OpenAsync(FileAccessMode.Read))
+                try
                 {
-                    BitmapImage bitmapImage = new BitmapImage
+                    var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+                    using (var fileStream = await file.OpenAsync(FileAccessMode.Read))
                     {
-                        DecodePixelHeight = 300,
-                        DecodePixelWidth = 300
-                    };
-                    await bitmapImage.SetSourceAsync(fileStream);
-                    CompanyImage.Source = bitmapImage;
+                        BitmapImage bitmapImage = new BitmapImage
+                        {
+                            DecodePixelHeight = 300,
+                            DecodePixelWidth = 300
+                        };
+                        await bitmapImage.SetSourceAsync(fileStream);
+                        CompanyImage.Source = bitmapImage;
+                    }
                 }
+                catch (Exception)
+                {
+                }
+
             }
         }
 

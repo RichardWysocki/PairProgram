@@ -22,6 +22,8 @@ namespace UniversalWindows
         public ManagementPage()
         {
             InitializeComponent();
+            FilePath.Visibility = Visibility.Collapsed;
+            SaveManageSettings.Visibility = Visibility.Collapsed;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -154,10 +156,12 @@ namespace UniversalWindows
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
                 finally
-                { }
+                {
+                    saveManageSettings(FilePath.Text);
+                }
 
             }
         }
@@ -165,6 +169,14 @@ namespace UniversalWindows
         private void SaveManageSettings_Click(object sender, RoutedEventArgs e)
         {
             var appSettings = new AppModel("12345",FilePath.Text);
+            var storageHelper = new StorageHelper<AppModel>(StorageType.Local);
+            storageHelper.SaveASync(appSettings, "AppSetting");
+        }
+
+
+        private void saveManageSettings(string file)
+        {
+            var appSettings = new AppModel("12345", file);
             var storageHelper = new StorageHelper<AppModel>(StorageType.Local);
             storageHelper.SaveASync(appSettings, "AppSetting");
         }
