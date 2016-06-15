@@ -63,7 +63,7 @@ namespace UniversalWindows
             }
             else
             {
-                textBlock.Text = "Operation cancelled.";
+               // textBlock.Text = "Operation cancelled.";
             }
 
 
@@ -151,6 +151,10 @@ namespace UniversalWindows
                 try
                 {
                     await file.CopyAsync(ApplicationData.Current.LocalFolder);
+                }
+                catch (Exception ex)
+                {
+                    
                 }
                 finally
                 { }

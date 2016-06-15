@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.Storage;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Microsoft.Advertising.WinRT.UI;
 using universalwindows.library.Common;
@@ -19,7 +17,7 @@ namespace UniversalWindows
     // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class TemplatePage : Page
     {
-        AppModel _SavedAppSettings = new AppModel();
+        AppModel _savedAppSettings = new AppModel();
 
         public TemplatePage()
         {
@@ -62,23 +60,22 @@ namespace UniversalWindows
         {
             ClearErrorMessage();
             saveButton.Focus(FocusState.Keyboard);
-            _SavedAppSettings = await ApplicationUtilities.GetAppSettings();
-            if (_SavedAppSettings != null && _SavedAppSettings.CompanyImage.Length > 0)
+            _savedAppSettings = await ApplicationUtilities.GetAppSettings();
+            if (_savedAppSettings != null && _savedAppSettings.CompanyImage.Length > 0)
             {
-                Uri uri = new Uri(@"ms-appdata:///local/" + _SavedAppSettings.CompanyImage, UriKind.Absolute);
-                BitmapSource bSource = new BitmapImage(uri);
-                var file = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
-                using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
+                Uri uri = new Uri(@"ms-appdata:///local/" + _savedAppSettings.CompanyImage, UriKind.Absolute);
+                //new BitmapImage(uri);
+                var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+                using (var fileStream = await file.OpenAsync(FileAccessMode.Read))
                 {
-                    BitmapImage bitmapImage = new BitmapImage();
-                    bitmapImage.DecodePixelHeight = 300;
-                    bitmapImage.DecodePixelWidth = 300;
+                    BitmapImage bitmapImage = new BitmapImage
+                    {
+                        DecodePixelHeight = 300,
+                        DecodePixelWidth = 300
+                    };
                     await bitmapImage.SetSourceAsync(fileStream);
                     CompanyImage.Source = bitmapImage;
                 }
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                //CompanyImage.Source = file;
-
             }
         }
 
