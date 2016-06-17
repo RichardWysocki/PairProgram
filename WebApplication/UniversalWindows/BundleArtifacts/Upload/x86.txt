@@ -1,2 +1,1 @@
-MainPackage=C:\Users\Richard\Source\Repos\PairProgram\WebApplication\UniversalWindows\bin\x86\Release\Upload\UniversalWindows_1.1.9.0_x86.appx
-SymbolPackage=C:\Users\Richard\Source\Repos\PairProgram\WebApplication\UniversalWindows\AppPackages\UniversalWindows_1.1.9.0\UniversalWindows_1.1.9.0_x86.appxsym
+MainPackage=C:\Users\Richard\Source\Repos\PairProgram\WebApplication\UniversalWindows\bin\x86\Release\Upload\UniversalWindows_1.1.12.0_x86.appx

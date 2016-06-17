@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="12620ConstantLearnings.TradeShowWonder" Publisher="CN=9E5EA470-1921-4475-B1C7-67B7B2FBE50A" Version="1.1.9.0" />
+  <Identity Name="12620ConstantLearnings.TradeShowWonder" Publisher="CN=9E5EA470-1921-4475-B1C7-67B7B2FBE50A" Version="1.1.12.0" />
   <mp:PhoneIdentity PhoneProductId="1084faca-4719-4241-889c-e09e6f0497b5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>TradeShow Wonder</DisplayName>
@@ -25,21 +25,20 @@
         <uap:SplashScreen Image="Assets\TSWSplashScreen.png" />
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="images">
-            <uap:DisplayName>Image</uap:DisplayName>
-            <uap:EditFlags OpenIsSafe="true" />
-            <uap:SupportedFileTypes>
-              <uap:FileType>.png</uap:FileType>
-            </uap:SupportedFileTypes>
-          </uap:FileTypeAssociation>
-        </uap:Extension>
         <uap:Extension Category="windows.fileOpenPicker">
           <uap:FileOpenPicker>
             <uap:SupportedFileTypes>
               <uap:FileType>.png</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileOpenPicker>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="images">
+            <uap:DisplayName>Image</uap:DisplayName>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.png</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>
     </Application>
