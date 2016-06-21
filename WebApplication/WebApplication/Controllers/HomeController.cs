@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using log4net;
 using WebApplication.Library;
 using WebApplication.Library.Interface;
 
@@ -7,12 +8,17 @@ namespace WebApplication.Controllers
     public class HomeController : Controller
     {
         private ISubject _isubject;
+        private static readonly ILog log = LogManager.GetLogger(typeof(HomeController));
+
         public HomeController(ISubject subject)
         {
             _isubject = subject;
         }
         public ActionResult Index()
         {
+            
+            log.Debug("thishe first log message");
+
             var x1 = new Observer("Item 1");
             var x2 = new Observer("Item 2");
             var x3 = new Observer("Item 3");
