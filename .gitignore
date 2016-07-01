@@ -38,3 +38,4 @@ _ReSharper*/
 /WebApplication/WebApplication.Database/WebApplication.Database.dbmdl
 /WebApplication/WebApplication/App_Data
 /WebApplication/WebApplication/log-file.txt
+*.nupkg
